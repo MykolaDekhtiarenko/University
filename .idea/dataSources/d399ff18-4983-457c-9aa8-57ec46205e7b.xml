@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="university@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="university">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mydb">
+      <Visible>1</Visible>
+    </schema>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="sys"/>
+    <schema id="8" parent="1" name="teaspo"/>
+    <schema id="9" parent="1" name="mdbUniversity"/>
+    <table id="10" parent="2" name="Discipline"/>
+    <table id="11" parent="2" name="Discipline_has_User"/>
+    <table id="12" parent="2" name="Period"/>
+    <table id="13" parent="2" name="Role"/>
+    <table id="14" parent="2" name="User"/>
+    <table id="15" parent="4" name="Discipline"/>
+    <table id="16" parent="4" name="Discipline_has_User"/>
+    <table id="17" parent="4" name="Period"/>
+    <table id="18" parent="4" name="Permission"/>
+    <table id="19" parent="4" name="Role"/>
+    <table id="20" parent="4" name="User"/>
+    <column id="21" parent="10" name="idDiscipline">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="22" parent="10" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="10" name="recommended">
+      <Position>3</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="10" name="credits">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="25" parent="10" name="idDiscipline_UNIQUE">
+      <ColNames>idDiscipline</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="26" parent="10" name="PRIMARY">
+      <ColNames>idDiscipline</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="27" parent="10" name="idDiscipline_UNIQUE">
+      <ColNames>idDiscipline</ColNames>
+      <UnderlyingIndexName>idDiscipline_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="28" parent="11" name="Discipline_idDiscipline">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="11" name="User_idUser">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="30" parent="11" name="fk_Discipline_has_User_User1_idx">
+      <ColNames>User_idUser</ColNames>
+    </index>
+    <key id="31" parent="11" name="PRIMARY">
+      <ColNames>Discipline_idDiscipline
+User_idUser</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="32" parent="11" name="fk_Discipline_has_User_Discipline">
+      <ColNames>Discipline_idDiscipline</ColNames>
+      <RefSchemaName>university</RefSchemaName>
+      <RefTableName>Discipline</RefTableName>
+      <RefColNames>idDiscipline</RefColNames>
+    </foreign-key>
+    <foreign-key id="33" parent="11" name="fk_Discipline_has_User_User1">
+      <ColNames>User_idUser</ColNames>
+      <RefSchemaName>university</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <column id="34" parent="12" name="idPeriod">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="12" name="Period">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="36" parent="12" name="PRIMARY">
+      <ColNames>idPeriod</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="13" name="idRole">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="13" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="39" parent="13" name="idRole_UNIQUE">
+      <ColNames>idRole</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="40" parent="13" name="PRIMARY">
+      <ColNames>idRole</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="41" parent="13" name="idRole_UNIQUE">
+      <ColNames>idRole</ColNames>
+      <UnderlyingIndexName>idRole_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="42" parent="14" name="idUser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="43" parent="14" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="14" name="secondName">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="14" name="credits">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="46" parent="14" name="Role_idRole">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="14" name="password">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+      <DefaultExpression>&apos;password&apos;</DefaultExpression>
+    </column>
+    <index id="48" parent="14" name="fk_User_Role1_idx">
+      <ColNames>Role_idRole</ColNames>
+    </index>
+    <index id="49" parent="14" name="idUser_UNIQUE">
+      <ColNames>idUser</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="50" parent="14" name="PRIMARY">
+      <ColNames>idUser
+Role_idRole</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="51" parent="14" name="idUser_UNIQUE">
+      <ColNames>idUser</ColNames>
+      <UnderlyingIndexName>idUser_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="52" parent="14" name="fk_User_Role1">
+      <ColNames>Role_idRole</ColNames>
+      <RefSchemaName>university</RefSchemaName>
+      <RefTableName>Role</RefTableName>
+      <RefColNames>idRole</RefColNames>
+      <OnUpdate>update</OnUpdate>
+    </foreign-key>
+    <column id="53" parent="15" name="idDiscipline">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="15" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="15" name="description">
+      <Position>3</Position>
+      <DataType>varchar(200)|0</DataType>
+      <DefaultExpression>&apos;None&apos;</DefaultExpression>
+    </column>
+    <column id="56" parent="15" name="teacher">
+      <Position>4</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;Not Specified&apos;</DefaultExpression>
+    </column>
+    <column id="57" parent="15" name="recommended">
+      <Position>5</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="15" name="credits">
+      <Position>6</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="59" parent="15" name="PRIMARY">
+      <ColNames>idDiscipline</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="60" parent="16" name="Discipline_idDiscipline">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="16" name="User_idUser">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="62" parent="16" name="fk_Discipline_has_User_Discipline_idx">
+      <ColNames>Discipline_idDiscipline</ColNames>
+    </index>
+    <index id="63" parent="16" name="fk_Discipline_has_User_User1_idx">
+      <ColNames>User_idUser</ColNames>
+    </index>
+    <key id="64" parent="16" name="PRIMARY">
+      <ColNames>Discipline_idDiscipline
+User_idUser</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="65" parent="16" name="fk_Discipline_has_User_Discipline">
+      <ColNames>Discipline_idDiscipline</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Discipline</RefTableName>
+      <RefColNames>idDiscipline</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="66" parent="16" name="fk_Discipline_has_User_User1">
+      <ColNames>User_idUser</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="67" parent="17" name="Period">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;preparatory&apos;</DefaultExpression>
+    </column>
+    <column id="68" parent="18" name="idPermission">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="18" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="18" name="description">
+      <Position>3</Position>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <column id="71" parent="18" name="Role_idRole">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="72" parent="18" name="fk_Permission_Role1_idx">
+      <ColNames>Role_idRole</ColNames>
+    </index>
+    <key id="73" parent="18" name="PRIMARY">
+      <ColNames>idPermission
+Role_idRole</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="74" parent="18" name="fk_Permission_Role1">
+      <ColNames>Role_idRole</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Role</RefTableName>
+      <RefColNames>idRole</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="75" parent="19" name="idRole">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="76" parent="19" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="77" parent="19" name="PRIMARY">
+      <ColNames>idRole</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="78" parent="20" name="idUser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="79" parent="20" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="80" parent="20" name="secondName">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="81" parent="20" name="credits">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="82" parent="20" name="Role_idRole">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="83" parent="20" name="fk_User_Role1_idx">
+      <ColNames>Role_idRole</ColNames>
+    </index>
+    <key id="84" parent="20" name="PRIMARY">
+      <ColNames>idUser
+Role_idRole</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="85" parent="20" name="fk_User_Role1">
+      <ColNames>Role_idRole</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Role</RefTableName>
+      <RefColNames>idRole</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>
