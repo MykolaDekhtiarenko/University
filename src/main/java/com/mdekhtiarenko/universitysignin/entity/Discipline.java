@@ -1,6 +1,8 @@
 package com.mdekhtiarenko.universitysignin.entity;
 
-import com.mdekhtiarenko.universitysignin.POJOs.POJODiscipline;
+
+import com.mdekhtiarenko.universitysignin.dao.Discipline_has_UserDAOImpl;
+import com.mdekhtiarenko.universitysignin.xml.XMLParser;
 
 import java.util.ArrayList;
 
@@ -20,25 +22,10 @@ public class Discipline {
 		this.name=name;
 		this.recommended=recommended;
 		this.credits=credits;
+		XMLParser xml = new XMLParser();
+		this.teacher = xml.getTeacher(id);
+		this.description = xml.getDescription(id);
 
-	}
-
-	public Discipline(String name, String teacher, boolean recommended, double credits) {
-		this.name=name;
-		this.teacher=teacher;
-		this.recommended=recommended;
-		this.credits=credits;
-
-		this.description="";
-	}
-
-	public Discipline(int id, String name, String teacher, boolean recommended, double credits, String description) {
-		this.id=id;
-		this.name=name;
-		this.teacher=teacher;
-		this.recommended=recommended;
-		this.credits=credits;
-		this.description=description;
 	}
 
 	@Override
@@ -49,23 +36,11 @@ public class Discipline {
 				", description='" + description + '\'' +
 				", teacher='" + teacher + '\'' +
 				", recommended=" + recommended +
-				", credits=" + credits;
-//				+
-//				"\nStudents: "+studentsNames.toString();
+				", credits=" + credits
+				+
+				"\nStudents: "+studentsNames.toString();
 	}
 
-	public POJODiscipline toPOJO(){
-		POJODiscipline pojo = new POJODiscipline();
-		pojo.setId(id);
-		pojo.setName(name);
-		pojo.setCredits(credits);
-		pojo.setDescription(description);
-		pojo.setRecommended(recommended);
-		pojo.setTeacher(teacher);
-		if(studentsNames!=null)
-			pojo.setStudentsNames((String[]) studentsNames.toArray());
-		return pojo;
-	}
 
 	public void setStudentsNames(ArrayList<String> studentsNames) {
 		this.studentsNames = studentsNames;

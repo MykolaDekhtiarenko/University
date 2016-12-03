@@ -6,6 +6,10 @@ import com.mdekhtiarenko.universitysignin.dao.RoleDAOImpl;
 import com.mdekhtiarenko.universitysignin.dao.UserDAOImpl;
 import com.mdekhtiarenko.universitysignin.entity.Discipline;
 import com.mdekhtiarenko.universitysignin.entity.User;
+import com.mdekhtiarenko.universitysignin.spring.delegate.IndexDelegate;
+import com.mdekhtiarenko.universitysignin.xml.XMLParser;
+
+import java.util.ArrayList;
 
 public class Main {
 	  public static void main(String[] args) throws Exception {
@@ -47,6 +51,14 @@ public class Main {
 //          System.out.println(RDI.getRole(1));
 //          DisciplineDAOImpl DDI = new DisciplineDAOImpl();
 //          System.out.print(DDI.getAllDiscipline().toString());
-	  }
+//		  XMLParser xmlParser = new XMLParser();
+//		  xmlParser.createInfoFile(2, "Глибовець", "None");
+//		  System.out.println("Teacher: "+xmlParser.getTeacher(1)+" Description: "+xmlParser.getDescription(1));
+//		  System.out.println("Teacher: "+xmlParser.getTeacher(2)+" Description: "+xmlParser.getDescription(2));
+		  IndexDelegate id = new IndexDelegate();
+
+		  ArrayList<Discipline> ar = id.getAllDiscipline();
+
+	    }
 
 }

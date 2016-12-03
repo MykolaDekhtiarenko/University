@@ -35,7 +35,10 @@ public class DisciplineDAOImpl implements DisciplineDAO{
         }
         ArrayList<Discipline> disciplines = new ArrayList<Discipline>();
         while (resultSet!=null&&resultSet.next()){
-            disciplines.add(new Discipline(resultSet.getInt("idDiscipline"), resultSet.getString("name"), resultSet.getBoolean("recommended"), resultSet.getDouble("credits")));
+            Discipline d = new Discipline(resultSet.getInt("idDiscipline"), resultSet.getString("name"), resultSet.getBoolean("recommended"), resultSet.getDouble("credits"));
+            setDisciplineStudents(d);
+            disciplines.add(d);
+
         }
         System.out.println(disciplines.size());
         return disciplines;
@@ -55,6 +58,7 @@ public class DisciplineDAOImpl implements DisciplineDAO{
         }
         if(resultSet!=null&&resultSet.next()) {
             Discipline result = new Discipline(resultSet.getInt("idDiscipline"), resultSet.getString("name"), resultSet.getBoolean("recommended"), resultSet.getDouble("credits"));
+            setDisciplineStudents(result);
             return result;
         } else return null;
     }

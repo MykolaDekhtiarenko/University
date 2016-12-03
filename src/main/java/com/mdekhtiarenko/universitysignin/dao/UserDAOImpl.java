@@ -41,6 +41,24 @@ public class UserDAOImpl implements UserDAO{
         return users;
     }
 
+    public boolean isValidUser(String username, String password) {
+        String query = "Select count(1) from User where username = ? and password = ?";
+        PreparedStatement pstmt = null;
+        try {
+            pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            ResultSet resultSet = pstmt.executeQuery();
+            if(resultSet.next())
+                return (resultSet.getInt(1) > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+
     public User getUser(int id) throws SQLException {
 
         ResultSet resultSet = null;

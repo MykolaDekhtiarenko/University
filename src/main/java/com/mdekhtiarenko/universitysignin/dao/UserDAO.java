@@ -13,5 +13,6 @@ public interface UserDAO {
 	   public void delete(int id);
 	   public void create(User user);
 	   public void updateUser(User user);
+	   public boolean isValidUser(String username, String password);
 	   public void setUserDisciplines(User user) throws SQLException;
 }

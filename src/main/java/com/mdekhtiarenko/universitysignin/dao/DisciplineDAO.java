@@ -13,5 +13,5 @@ public interface DisciplineDAO {
 	   public void delete(int id);
 	   public void create(Discipline discipline);
 	   public void updateDiscipline(Discipline discipline);
-	   public void setDisciplineStudents(Discipline discipline) throws SQLException;
+	public void setDisciplineStudents(Discipline discipline) throws SQLException;
 }
