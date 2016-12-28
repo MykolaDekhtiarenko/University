@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="header">
-    <button id="login" type="button" class="btn btn-default">Вхід</button>
+    <center><button id="login" type="button" class="btn btn-primary">Вхід</button></center>
 </div>
 <div class="container">
 <c:if test="${not empty list}">

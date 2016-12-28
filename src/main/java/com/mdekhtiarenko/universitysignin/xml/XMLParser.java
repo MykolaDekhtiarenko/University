@@ -4,6 +4,8 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.*;
 import java.io.*;
+import java.util.Scanner;
+
 /**
  * Created by mykola.dekhtiarenko on 30.11.16.
  */
@@ -33,6 +35,29 @@ public class XMLParser {
             e.printStackTrace();
         }
     }
+
+    public String getFile(int id) throws FileNotFoundException {
+        File inputFile = new File("/Users/mykola.dekhtiarenko/Documents/workspace/UniversitySignIn/src/main/xml-info/"+id+"-info.xml");
+        Scanner sc = new Scanner(inputFile);
+        String xml="";
+        while (sc.hasNext())
+            xml+=sc.next()+" ";
+        return xml;
+    }
+
+    public void createInfoFileUsingString(int id, String file){
+        StringBuilder xmlStringBuilder = new StringBuilder();
+        xmlStringBuilder.append(file);
+        try{
+            FileWriter writer = new FileWriter("/Users/mykola.dekhtiarenko/Documents/workspace/UniversitySignIn/src/main/xml-info/"+id+"-info.xml", false);
+            writer.write(xmlStringBuilder.toString());
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     public String getTeacher(int disciplineId){
         File inputFile = new File("/Users/mykola.dekhtiarenko/Documents/workspace/UniversitySignIn/src/main/xml-info/"+disciplineId+"-info.xml");

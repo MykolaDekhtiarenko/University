@@ -8,6 +8,25 @@ public class DisciplineForm {
     private String name;
     private double credits;
     private boolean recommended;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+    private String teacher;
 
     public void setName(String name) {
         this.name = name;

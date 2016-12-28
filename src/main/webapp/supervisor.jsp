@@ -29,26 +29,11 @@
     <title>Методист</title>
 </head>
 <body>
-<a class="btn btn-default" href="${pageContext.request.contextPath}/logout">Вийти з системи</a>
 
-<div id="popup" class="popupinput displaynone">
-    <div class="popup-content">
-        <h3>Оновіть дані</h3>
-        <div class="form-group">
-            <label for="teachername"> Викладач:</label>
-            <input type="text" class="form-control" id="teachername"><br>
-            <label for="description"> Aннотація:</label>
-            <textarea type="text" class="form-control" rows="4" id="description"></textarea><br>
-            <div class="checkbox">
-                <label><input id="recommended" type="checkbox" value="">Рекомендована</label>
-            </div>
-            <div id="close" class="btn btn-default">Відмінити</div>
-            <div id="refresh"  class="btn btn-primary">Оновити</div>
-        </div>
-    </div>
-</div>
+
 <div class="container-fluid">
-    Користувач: ${name}
+    <center><h2>Користувач: ${name}</h2></center>
+    <center><a class="btn btn-default" href="${pageContext.request.contextPath}/logout">Вийти з системи</a></center>
 </div>
 <div class="container">
     <div id="table" class="col-md-12">
@@ -70,7 +55,10 @@
                 </tr>
                 <c:forEach items="${alldisciplines}" var="object">
                     <tr>
-                        <c:if test="${period=='preparatory'}"><td><a class="edit"  disciplineId="${object.id}" disciplineTeacher="${object.teacher}" disciplineDescription="${discipline.description}">Редагувати<samp class="displaynone"></samp></a></td></c:if>
+                        <c:if test="${period=='preparatory'}"><td>
+                                <a class="edit" href="/edit/${object.id}">Редагувати<samp class="displaynone"></samp></a><br>
+                                <a class="edit" href="/editXML/${object.id}">Редагувати XML файл<samp class="displaynone"></samp></a>
+                        </td></c:if>
                         <td>${object.name}</td>
                         <td>${object.credits}</td>
                         <td class="recommended">${object.recommended}</td>

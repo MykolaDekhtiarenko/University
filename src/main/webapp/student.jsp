@@ -29,11 +29,12 @@
 </head>
 <body>
 <div class="container-fluid">
-    Користувач: ${name}<br>
-    Кількість кредитів: ${credits}
+    <center><h2>Користувач: ${name}</h2></center>
+    <center><h3>Кількість кредитів: ${credits}</h3></center>
+    <center><a class="btn btn-default" href="${pageContext.request.contextPath}/logout">Вийти з системи</a></center>
 </div>
 
-       <a class="btn btn-default" href="${pageContext.request.contextPath}/logout">Вийти з системи</a>
+
 
 </div>
     <div class="container">

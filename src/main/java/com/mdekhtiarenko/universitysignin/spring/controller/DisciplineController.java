@@ -6,6 +6,7 @@ import com.mdekhtiarenko.universitysignin.entity.Discipline;
 import com.mdekhtiarenko.universitysignin.spring.delegate.IndexDelegate;
 import com.mdekhtiarenko.universitysignin.spring.viewBean.DisciplineForm;
 import com.mdekhtiarenko.universitysignin.spring.viewBean.SignInBean;
+import com.mdekhtiarenko.universitysignin.spring.viewBean.XML;
 import com.mdekhtiarenko.universitysignin.xml.XMLParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.FileNotFoundException;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
 
@@ -119,5 +121,46 @@ public class DisciplineController {
         }
         return modelAndView;
 
+    }
+
+    @RequestMapping(value="/edit/{id}", method= RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+    public ModelAndView editXMLDiscipline(@PathVariable Integer id) throws SQLException {
+        ModelAndView mv = new ModelAndView("editXML");
+        DisciplineDAOImpl ddi = new DisciplineDAOImpl();
+        Discipline d = ddi.getDiscipline(id);
+        mv.addObject("discipline", d);
+        return mv;
+    }
+
+    @RequestMapping(value="/edit/{id}", method= RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+    public ModelAndView saveXMLDiscipline(@PathVariable Integer id, @ModelAttribute("DisciplineForm")DisciplineForm form) throws SQLException {
+        ModelAndView mv = new ModelAndView("redirect:/login");
+        XMLParser xml = new XMLParser();
+        xml.createInfoFile(id, form.getTeacher(), form.getDescription());
+        DisciplineDAOImpl ddi = new DisciplineDAOImpl();
+        Discipline d = ddi.getDiscipline(id);
+        d.setRecommended(form.isRecommended());
+        ddi.updateDiscipline(d);
+        return mv;
+    }
+
+    @RequestMapping(value="/editXML/{id}", method= RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+    public ModelAndView editXMLCode(@PathVariable Integer id) throws SQLException, FileNotFoundException {
+        ModelAndView mv = new ModelAndView("editXMLCode");
+        XMLParser xmlParser = new XMLParser();
+        String xmlStr = xmlParser.getFile(id);
+
+        mv.addObject("XML", new XML());
+        mv.addObject("xml", xmlStr);
+        mv.addObject("id", id);
+        return mv;
+    }
+
+    @RequestMapping(value="/editXML/{id}", method= RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+    public ModelAndView saveXMLCode(@PathVariable Integer id, @ModelAttribute("XML")XML xml) throws SQLException {
+        ModelAndView mv = new ModelAndView("redirect:/login");
+        XMLParser xmlParser = new XMLParser();
+        xmlParser.createInfoFileUsingString(id, xml.getXml());
+        return mv;
     }
 }

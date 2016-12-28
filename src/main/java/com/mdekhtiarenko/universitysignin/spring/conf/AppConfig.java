@@ -5,6 +5,7 @@ import com.mdekhtiarenko.universitysignin.dao.UserDAOImpl;
 import com.mdekhtiarenko.universitysignin.spring.delegate.IndexDelegate;
 import com.mdekhtiarenko.universitysignin.spring.delegate.LoginDelegate;
 import com.mdekhtiarenko.universitysignin.spring.viewBean.DisciplineForm;
+import com.mdekhtiarenko.universitysignin.spring.viewBean.XML;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +41,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public DisciplineForm disciplineForm(){
         DisciplineForm disciplineForm = new DisciplineForm();
         return disciplineForm;
+    }
+
+    @Bean
+    public XML xmlForm(){
+        XML xml = new XML();
+        return xml;
     }
 
     @Bean

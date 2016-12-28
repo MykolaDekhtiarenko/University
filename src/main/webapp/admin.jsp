@@ -28,10 +28,11 @@
     <title>Aдміністратор</title>
 </head>
 <body>
-<a class="btn btn-default" href="${pageContext.request.contextPath}/logout">Вийти з системи</a>
+
 
 <div class="container-fluid">
-    Користувач: ${name}
+    <center><h2>Користувач: ${name}</h2></center>
+    <center><a class="btn btn-default" href="${pageContext.request.contextPath}/logout">Вийти з системи</a></center>
 </div>
 <div class="container">
     <a href="${pageContext.request.contextPath}/discipline/add"><div style="display: inline-block" class="btn btn-primary">Додати дисципліну</div></a>
