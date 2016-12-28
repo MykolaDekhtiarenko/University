@@ -12,7 +12,7 @@ import java.util.List;
 public class DisciplineDAOImpl implements DisciplineDAO{
     Connection connection = null;
 
-    private static final String INSERT = "INSERT INTO Discipline (name, description, teacher, recommended, credits) VALUES ";
+    private static final String INSERT = "INSERT INTO Discipline (name, recommended, credits) VALUES ";
     private static final String SELECT = "SELECT * FROM Discipline WHERE idDiscipline IN ";
     private static final String Dellete = "DELETE FROM Discipline WHERE idDiscipline = ";
     private static final String SELECTEVERYTHING = "SELECT * FROM Discipline";
@@ -93,7 +93,7 @@ public class DisciplineDAOImpl implements DisciplineDAO{
         String command = "UPDATE Discipline SET ";
         command += "name = '"+discipline.getName()+"', ";
         command += "recommended = '"+discipline.isRecommendedToSQL()+"', ";
-        command += "name = '"+discipline.getCredits()+"' ";
+        command += "credits = '"+discipline.getCredits()+"' ";
         command += "WHERE idDiscipline = '"+discipline.getId()+"'";
 
         try {

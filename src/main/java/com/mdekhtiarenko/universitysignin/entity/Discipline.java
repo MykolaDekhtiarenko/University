@@ -28,7 +28,13 @@ public class Discipline {
 
 	}
 
-	@Override
+    public Discipline(String name, double credits, boolean recommended) {
+		this.name=name;
+		this.recommended=recommended;
+		this.credits=credits;
+    }
+
+    @Override
 	public String toString() {
 		return "Discipline " +
 				"id=" + id +

@@ -55,9 +55,8 @@ public class Main {
 //		  xmlParser.createInfoFile(2, "Глибовець", "None");
 //		  System.out.println("Teacher: "+xmlParser.getTeacher(1)+" Description: "+xmlParser.getDescription(1));
 //		  System.out.println("Teacher: "+xmlParser.getTeacher(2)+" Description: "+xmlParser.getDescription(2));
-		  IndexDelegate id = new IndexDelegate();
-
-		  ArrayList<Discipline> ar = id.getAllDiscipline();
+		  Discipline_has_UserDAOImpl ddi = new Discipline_has_UserDAOImpl();
+		  ddi.signIn(1, 1);
 
 	    }
 

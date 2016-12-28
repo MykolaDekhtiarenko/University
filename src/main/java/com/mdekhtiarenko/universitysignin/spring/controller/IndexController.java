@@ -1,5 +1,8 @@
 package com.mdekhtiarenko.universitysignin.spring.controller;
 
+import com.mdekhtiarenko.universitysignin.dao.DisciplineDAOImpl;
+import com.mdekhtiarenko.universitysignin.dao.Discipline_has_UserDAOImpl;
+import com.mdekhtiarenko.universitysignin.entity.Discipline;
 import com.mdekhtiarenko.universitysignin.spring.delegate.IndexDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,8 @@ public class IndexController {
         mv.addObject("list", indexDelegate.getAllDiscipline());
         return mv;
     }
+
+
 }
 
 

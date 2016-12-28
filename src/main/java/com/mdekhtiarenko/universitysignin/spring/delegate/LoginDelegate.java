@@ -5,6 +5,7 @@ package com.mdekhtiarenko.universitysignin.spring.delegate;
  */
 
 import com.mdekhtiarenko.universitysignin.dao.UserDAOImpl;
+import com.mdekhtiarenko.universitysignin.entity.User;
 
 import java.sql.SQLException;
 
@@ -20,7 +21,7 @@ public class LoginDelegate {
         this.userService = userService;
     }
 
-    public boolean isValidUser(String username, String password) throws SQLException {
+    public User isValidUser(String username, String password) throws SQLException {
         return userService.isValidUser(username, password);
     }
 }

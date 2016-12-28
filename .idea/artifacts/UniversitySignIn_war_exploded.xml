@@ -17,6 +17,9 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.4.RELEASE" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.40" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.1.2.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.1.2.RELEASE" />
         </element>
       </element>
       <element id="directory" name="META-INF">

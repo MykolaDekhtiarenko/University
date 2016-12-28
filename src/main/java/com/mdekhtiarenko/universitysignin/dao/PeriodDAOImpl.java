@@ -33,18 +33,13 @@ public class PeriodDAOImpl implements PeriodDAO{
         } else return null;
     }
 
-    public void nextPeriod() {
+    public void setPeriod(String period) {
         try {
 
-            Period current = getPeriod();
             Statement statement = connection.createStatement();
             statement.execute("DELETE FROM period");
+            statement.execute(INSERT+"(1, '"+period+"')");
 
-            if(current.toString().equals(Period.PREPARATORY))
-                statement.execute(INSERT+"('"+Period.SIGN_IN+"')");
-            else if(current.toString().equals(Period.SIGN_IN))
-                statement.execute(INSERT+"('"+Period.FINALE+"')");
-            else statement.execute(INSERT+"('"+Period.PREPARATORY+"')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -52,19 +47,19 @@ public class PeriodDAOImpl implements PeriodDAO{
 
     }
 
-    public void setToDefault() {
-        try {
-
-            Period current = getPeriod();
-            Statement statement = connection.createStatement();
-            statement.execute("DELETE FROM period");
-
-            statement.execute(INSERT + "('" + Period.PREPARATORY + "')");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void setToDefault() {
+//        try {
+//
+//            Period current = getPeriod();
+//            Statement statement = connection.createStatement();
+//            statement.execute("DELETE FROM period");
+//
+//            statement.execute(INSERT + "('" + Period.PREPARATORY + "')");
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void closeConnection(){
         try {

@@ -6,6 +6,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
+import javax.jws.soap.SOAPBinding;
+
 /**
  * Created by mykola.dekhtiarenko on 26.11.16.
  */
@@ -41,21 +43,24 @@ public class UserDAOImpl implements UserDAO{
         return users;
     }
 
-    public boolean isValidUser(String username, String password) {
-        String query = "Select count(1) from User where username = ? and password = ?";
+    public User isValidUser(String username, String password) {
+        String query = "Select * FROM User where username = ? and password = ?";
         PreparedStatement pstmt = null;
         try {
             pstmt = connection.prepareStatement(query);
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             ResultSet resultSet = pstmt.executeQuery();
-            if(resultSet.next())
-                return (resultSet.getInt(1) > 0);
+            if(resultSet.next()) {
+                User res = new User(resultSet.getInt("idUser"), resultSet.getString("name"), resultSet.getString("secondName"), resultSet.getDouble("credits"), resultSet.getInt("Role_idRole"));
+                setUserDisciplines(res);
+                return res;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
-        return false;
+        return null;
     }
 
 
@@ -140,7 +145,7 @@ public class UserDAOImpl implements UserDAO{
 
         ArrayList<Integer> disciplinesIds = new ArrayList<Integer>();
         while (resultSet!=null&&resultSet.next()){
-            disciplinesIds.add(resultSet.getInt("DIscipline_idDiscipline"));
+            disciplinesIds.add(resultSet.getInt("Discipline_idDiscipline"));
         }
 
         if (resultSet!=null)

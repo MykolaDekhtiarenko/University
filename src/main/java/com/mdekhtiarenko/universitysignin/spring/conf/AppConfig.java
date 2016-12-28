@@ -4,6 +4,7 @@ import com.mdekhtiarenko.universitysignin.dao.DisciplineDAOImpl;
 import com.mdekhtiarenko.universitysignin.dao.UserDAOImpl;
 import com.mdekhtiarenko.universitysignin.spring.delegate.IndexDelegate;
 import com.mdekhtiarenko.universitysignin.spring.delegate.LoginDelegate;
+import com.mdekhtiarenko.universitysignin.spring.viewBean.DisciplineForm;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.mdekhtiarenko.universitysignin.spring")
 public class AppConfig extends WebMvcConfigurerAdapter {
+
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -32,6 +34,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         LoginDelegate loginDelegate = new LoginDelegate();
         loginDelegate.setUserService(userDAOImpl());
         return loginDelegate;
+    }
+
+    @Bean
+    public DisciplineForm disciplineForm(){
+        DisciplineForm disciplineForm = new DisciplineForm();
+        return disciplineForm;
     }
 
     @Bean

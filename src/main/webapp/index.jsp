@@ -4,12 +4,27 @@
 <html>
 <head>
     <title></title>
-    <meta charset="UTF-8">
-    <link rel='stylesheet' href='<c:url value="/resources/css/style.css" />' type='text/css' media='all'/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/resources/javascript/table.js"></script>
+    <script src="/resources/javascript/index.js"></script>
+
 </head>
 <body>
+<div class="header">
+    <button id="login" type="button" class="btn btn-default">Вхід</button>
+</div>
+<div class="container">
 <c:if test="${not empty list}">
-    <table>
+    <%--<div><div id="recommendedButton" class="btn-s">Лише рекомендовані</div> <div class="btn-w" id="allButton">Усі</div></div>--%>
+    <form>
+        <input name="disciplines" id="recommendedButton" type="radio" > Рекомендовані
+        <input name="disciplines" id="allButton" type="radio" checked> Усі<br>
+    </form>
+    <table class="table">
         <tr>
             <th>Назва</th>
             <th>Кредити</th>
@@ -22,7 +37,7 @@
         <tr>
             <td>${object.name}</td>
             <td>${object.credits}</td>
-            <td>${object.recommended}</td>
+            <td class="recommended">${object.recommended}</td>
             <td>${object.teacher}</td>
             <td>${object.description}</td>
             <td>
@@ -34,5 +49,6 @@
     </c:forEach>
     </table>
 </c:if>
+</div>
 </body>
 </html>

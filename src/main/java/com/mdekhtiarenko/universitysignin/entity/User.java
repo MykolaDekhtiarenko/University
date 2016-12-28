@@ -1,5 +1,6 @@
 package com.mdekhtiarenko.universitysignin.entity;
 
+import com.mdekhtiarenko.universitysignin.dao.DisciplineDAOImpl;
 import com.mdekhtiarenko.universitysignin.dao.RoleDAOImpl;
 
 import java.sql.SQLException;

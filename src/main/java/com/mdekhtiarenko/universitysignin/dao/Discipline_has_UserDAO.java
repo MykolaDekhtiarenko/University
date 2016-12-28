@@ -1,5 +1,7 @@
 package com.mdekhtiarenko.universitysignin.dao;
 
+import com.mdekhtiarenko.universitysignin.spring.viewBean.SignInBean;
+
 import java.sql.SQLException;
 
 /**
@@ -7,5 +9,5 @@ import java.sql.SQLException;
  */
 public interface Discipline_has_UserDAO {
 
-    public void signIn(int userId, int disciplineId) throws SQLException;
+    public SignInBean signIn(int userId, int disciplineId) throws SQLException;
 }
